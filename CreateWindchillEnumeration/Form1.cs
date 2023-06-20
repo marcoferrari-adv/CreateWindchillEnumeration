@@ -18,14 +18,14 @@ namespace CreateWindchillEnumeration
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void save_Click(object sender, EventArgs e)
         {
 
             List<Dictionary<string, object>> tableRows = new List<Dictionary<string, object>>();
-            errorProvider1.Clear();
-            errorProvider1.BlinkStyle = ErrorBlinkStyle.NeverBlink;
+            errorProvider.Clear();
+            errorProvider.BlinkStyle = ErrorBlinkStyle.NeverBlink;
             Boolean validationError = false;
-            foreach (DataGridViewRow row in dataGridView1.Rows)
+            foreach (DataGridViewRow row in enumGrid.Rows)
             {
                 var currentRowInternalValue = row.Cells["InternalValue"].Value as string;
                 if (string.IsNullOrEmpty(currentRowInternalValue))
@@ -59,25 +59,25 @@ namespace CreateWindchillEnumeration
 
             if (!ValidationHelper.isInternalValueValid(internalNameEnum.Text))
             {
-                errorProvider1.SetError(internalNameEnum, "Invalid format only letters, digit, '-' and '_' are allowed");
+                errorProvider.SetError(internalNameEnum, "Invalid format only letters, digit, '-' and '_' are allowed");
                 validationError = true;
             }
 
             if (string.IsNullOrEmpty(containerDomain.Text))
             {
-                errorProvider1.SetError(containerDomain, "Value is required");
+                errorProvider.SetError(containerDomain, "Value is required");
                 validationError = true;
             }
 
             if (string.IsNullOrEmpty(organizerName.Text))
             {
-                errorProvider1.SetError(organizerName, "Value is required");
+                errorProvider.SetError(organizerName, "Value is required");
                 validationError = true;
             }
 
             if (string.IsNullOrEmpty(valueDisplayName.Text))
             {
-                errorProvider1.SetError(valueDisplayName, "Value is required");
+                errorProvider.SetError(valueDisplayName, "Value is required");
                 validationError = true;
             }
 
@@ -109,11 +109,11 @@ namespace CreateWindchillEnumeration
 
         private void AddLocaleBtn_Click(object sender, EventArgs e)
         {
-            var selectedLocale = LocaleCombo.SelectedItem is not null ? LocaleCombo.SelectedItem.ToString() : null;
+            var selectedLocale = localeCombo.SelectedItem is not null ? localeCombo.SelectedItem.ToString() : null;
             if(!string.IsNullOrEmpty(selectedLocale))
             {
                 string columnName = $"Display_{selectedLocale}";
-                if(!dataGridView1.Columns.Contains(columnName))
+                if(!enumGrid.Columns.Contains(columnName))
                 {
                     DataGridViewColumn newColumn = new DataGridViewColumn
                     {
@@ -124,7 +124,7 @@ namespace CreateWindchillEnumeration
                     };
                     newColumn.CellTemplate = new DataGridViewTextBoxCell();
 
-                    dataGridView1.Columns.Add(newColumn);
+                    enumGrid.Columns.Add(newColumn);
                 }
                     
             }
@@ -138,23 +138,23 @@ namespace CreateWindchillEnumeration
                 if (o.GetDataPresent(DataFormats.Text))
                 {
                     
-                    var rowStartIndex = dataGridView1.CurrentRow.Index;
-                    var cellStartIndex = dataGridView1.CurrentCell.ColumnIndex;
+                    var rowStartIndex = enumGrid.CurrentRow.Index;
+                    var cellStartIndex = enumGrid.CurrentCell.ColumnIndex;
                     var clipboardText = o.GetData(DataFormats.Text).ToString();
                     string[] pastedRows = Regex.Split(clipboardText.TrimEnd("\r\n".ToCharArray()), "\r\n");
 
-                    if((rowStartIndex + pastedRows.Length) > dataGridView1.Rows.Count)
+                    if((rowStartIndex + pastedRows.Length) > enumGrid.Rows.Count)
                     {
                        
-                        dataGridView1.AllowUserToAddRows = false;
-                        dataGridView1.Rows.Insert(rowStartIndex , (rowStartIndex + pastedRows.Length) - dataGridView1.Rows.Count);
-                        dataGridView1.AllowUserToAddRows = true;
+                        enumGrid.AllowUserToAddRows = false;
+                        enumGrid.Rows.Insert(rowStartIndex , (rowStartIndex + pastedRows.Length) - enumGrid.Rows.Count);
+                        enumGrid.AllowUserToAddRows = true;
                     }                 
                    
                     for(int i = rowStartIndex; i < (rowStartIndex + pastedRows.Length); i++)
                     {
                         string[] pastedRowCells = pastedRows[i - rowStartIndex].Split(new char[] { '\t' });
-                        using (DataGridViewRow myDataGridViewRow = dataGridView1.Rows[i])
+                        using (DataGridViewRow myDataGridViewRow = enumGrid.Rows[i])
                         {
                             for (int j = 0; j < pastedRowCells.Length; j++)
                             {
@@ -166,7 +166,7 @@ namespace CreateWindchillEnumeration
                         }
                     }
 
-                    dataGridView1.CommitEdit(DataGridViewDataErrorContexts.Commit);
+                    enumGrid.CommitEdit(DataGridViewDataErrorContexts.Commit);
                 }
             }
         }
@@ -179,7 +179,7 @@ namespace CreateWindchillEnumeration
         private void button2_Click(object sender, EventArgs e)
         {
             List< DataGridViewColumn> columnsToRemove = new List<DataGridViewColumn>();
-            foreach(DataGridViewColumn column in dataGridView1.Columns)
+            foreach(DataGridViewColumn column in enumGrid.Columns)
             {
                 if(column.Name.StartsWith("Display_"))
                     columnsToRemove.Add(column);
@@ -188,26 +188,21 @@ namespace CreateWindchillEnumeration
 
             foreach (var column in columnsToRemove)
             {
-                dataGridView1.Columns.Remove(column);
+                enumGrid.Columns.Remove(column);
             }
 
-            dataGridView1.Rows.Clear();
-            dataGridView1.Refresh();
-        }
-
-        private void textBox2_TextChanged(object sender, EventArgs e)
-        {
-
+            enumGrid.Rows.Clear();
+            enumGrid.Refresh();
         }
 
         private void RemoveLocaleBtn_Click(object sender, EventArgs e)
         {
-            foreach(DataGridViewColumn column in dataGridView1.SelectedColumns)
+            foreach(DataGridViewColumn column in enumGrid.SelectedColumns)
             {
                 if(column.Name.StartsWith("Display_"))
                 {
-                    dataGridView1.Columns.RemoveAt(column.Index);
-                    dataGridView1.Refresh();
+                    enumGrid.Columns.RemoveAt(column.Index);
+                    enumGrid.Refresh();
                 }
             }
         }
@@ -220,16 +215,16 @@ namespace CreateWindchillEnumeration
                 switch(control.Name)
                 {
                     case "containerDomain":
-                        toolTip1.SetToolTip(control, "Nome del dominio dell'applicazione rovesciato. E.s. com.ptc");
+                        textBoxTooltip.SetToolTip(control, "Nome del dominio dell'applicazione rovesciato. E.s. com.ptc");
                         break;
                     case "internalNameEnum":
-                        toolTip1.SetToolTip(control, "Nome interno dell'enumerativo");
+                        textBoxTooltip.SetToolTip(control, "Nome interno dell'enumerativo");
                         break;
                     case "organizerName":
-                        toolTip1.SetToolTip(control, "Nome interno della folder in cui creare l'enumerativo");
+                        textBoxTooltip.SetToolTip(control, "Nome interno della folder in cui creare l'enumerativo");
                         break;
                     case "valueDisplayName":
-                        toolTip1.SetToolTip(control, "Display dell'enumerativo");
+                        textBoxTooltip.SetToolTip(control, "Display dell'enumerativo");
                         break;
                 }
                 

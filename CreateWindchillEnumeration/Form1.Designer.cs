@@ -29,17 +29,18 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
+            this.saveBtn = new System.Windows.Forms.Button();
             this.saveFileDialog = new System.Windows.Forms.SaveFileDialog();
-            this.LocaleCombo = new System.Windows.Forms.ComboBox();
-            this.AddLocaleBtn = new System.Windows.Forms.Button();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.localeCombo = new System.Windows.Forms.ComboBox();
+            this.addLocaleBtn = new System.Windows.Forms.Button();
+            this.enumGrid = new System.Windows.Forms.DataGridView();
             this.InternalValue = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MasterText = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel2 = new System.Windows.Forms.TableLayoutPanel();
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
-            this.RemoveLocaleBtn = new System.Windows.Forms.Button();
+            this.removeLocaleBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
             this.internalNameEnum = new System.Windows.Forms.TextBox();
             this.organizerName = new System.Windows.Forms.TextBox();
@@ -48,40 +49,40 @@
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
             this.valueSort = new System.Windows.Forms.CheckBox();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
-            this.button2 = new System.Windows.Forms.Button();
-            this.errorProvider1 = new System.Windows.Forms.ErrorProvider(this.components);
-            this.toolTip1 = new System.Windows.Forms.ToolTip(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.resetBtn = new System.Windows.Forms.Button();
+            this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
+            this.textBoxTooltip = new System.Windows.Forms.ToolTip(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.enumGrid)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
             this.tableLayoutPanel4.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tableLayoutPanel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).BeginInit();
             this.SuspendLayout();
             // 
-            // button1
+            // saveBtn
             // 
-            this.button1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.button1.Location = new System.Drawing.Point(944, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(94, 23);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Save";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.saveBtn.Dock = System.Windows.Forms.DockStyle.Right;
+            this.saveBtn.Location = new System.Drawing.Point(944, 3);
+            this.saveBtn.Name = "saveBtn";
+            this.saveBtn.Size = new System.Drawing.Size(94, 23);
+            this.saveBtn.TabIndex = 0;
+            this.saveBtn.Text = "Save";
+            this.saveBtn.UseVisualStyleBackColor = true;
+            this.saveBtn.Click += new System.EventHandler(this.save_Click);
             // 
             // saveFileDialog
             // 
             this.saveFileDialog.DefaultExt = "xml";
             this.saveFileDialog.Filter = "File XMl|*.xml";
             // 
-            // LocaleCombo
+            // localeCombo
             // 
-            this.LocaleCombo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.LocaleCombo.FormattingEnabled = true;
-            this.LocaleCombo.Items.AddRange(new object[] {
+            this.localeCombo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.localeCombo.FormattingEnabled = true;
+            this.localeCombo.Items.AddRange(new object[] {
             "en_US",
             "en_GB",
             "de",
@@ -93,34 +94,34 @@
             "zh_cn",
             "zh_tw",
             "pt_br"});
-            this.LocaleCombo.Location = new System.Drawing.Point(3, 3);
-            this.LocaleCombo.Name = "LocaleCombo";
-            this.LocaleCombo.Size = new System.Drawing.Size(220, 21);
-            this.LocaleCombo.TabIndex = 2;
+            this.localeCombo.Location = new System.Drawing.Point(3, 3);
+            this.localeCombo.Name = "localeCombo";
+            this.localeCombo.Size = new System.Drawing.Size(220, 21);
+            this.localeCombo.TabIndex = 2;
             // 
-            // AddLocaleBtn
+            // addLocaleBtn
             // 
-            this.AddLocaleBtn.Location = new System.Drawing.Point(229, 3);
-            this.AddLocaleBtn.Name = "AddLocaleBtn";
-            this.AddLocaleBtn.Size = new System.Drawing.Size(154, 21);
-            this.AddLocaleBtn.TabIndex = 3;
-            this.AddLocaleBtn.Text = "Add Locale";
-            this.AddLocaleBtn.UseVisualStyleBackColor = true;
-            this.AddLocaleBtn.Click += new System.EventHandler(this.AddLocaleBtn_Click);
+            this.addLocaleBtn.Location = new System.Drawing.Point(229, 3);
+            this.addLocaleBtn.Name = "addLocaleBtn";
+            this.addLocaleBtn.Size = new System.Drawing.Size(154, 21);
+            this.addLocaleBtn.TabIndex = 3;
+            this.addLocaleBtn.Text = "Add Locale";
+            this.addLocaleBtn.UseVisualStyleBackColor = true;
+            this.addLocaleBtn.Click += new System.EventHandler(this.AddLocaleBtn_Click);
             // 
-            // dataGridView1
+            // enumGrid
             // 
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.enumGrid.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.enumGrid.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.InternalValue,
             this.MasterText});
-            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView1.Location = new System.Drawing.Point(3, 133);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.ColumnHeaderSelect;
-            this.dataGridView1.Size = new System.Drawing.Size(1041, 408);
-            this.dataGridView1.TabIndex = 2;
-            this.dataGridView1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
+            this.enumGrid.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.enumGrid.Location = new System.Drawing.Point(3, 133);
+            this.enumGrid.Name = "enumGrid";
+            this.enumGrid.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.ColumnHeaderSelect;
+            this.enumGrid.Size = new System.Drawing.Size(1041, 408);
+            this.enumGrid.TabIndex = 2;
+            this.enumGrid.KeyDown += new System.Windows.Forms.KeyEventHandler(this.dataGridView1_KeyDown);
             // 
             // InternalValue
             // 
@@ -138,7 +139,7 @@
             // 
             this.tableLayoutPanel1.ColumnCount = 1;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Controls.Add(this.dataGridView1, 0, 1);
+            this.tableLayoutPanel1.Controls.Add(this.enumGrid, 0, 1);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel2, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.tableLayoutPanel6, 0, 2);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -174,9 +175,9 @@
             this.tableLayoutPanel3.ColumnCount = 2;
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Controls.Add(this.AddLocaleBtn, 1, 0);
-            this.tableLayoutPanel3.Controls.Add(this.LocaleCombo, 0, 0);
-            this.tableLayoutPanel3.Controls.Add(this.RemoveLocaleBtn, 1, 1);
+            this.tableLayoutPanel3.Controls.Add(this.addLocaleBtn, 1, 0);
+            this.tableLayoutPanel3.Controls.Add(this.localeCombo, 0, 0);
+            this.tableLayoutPanel3.Controls.Add(this.removeLocaleBtn, 1, 1);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel3.Location = new System.Drawing.Point(3, 65);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
@@ -186,15 +187,15 @@
             this.tableLayoutPanel3.Size = new System.Drawing.Size(453, 56);
             this.tableLayoutPanel3.TabIndex = 4;
             // 
-            // RemoveLocaleBtn
+            // removeLocaleBtn
             // 
-            this.RemoveLocaleBtn.Location = new System.Drawing.Point(229, 31);
-            this.RemoveLocaleBtn.Name = "RemoveLocaleBtn";
-            this.RemoveLocaleBtn.Size = new System.Drawing.Size(154, 22);
-            this.RemoveLocaleBtn.TabIndex = 4;
-            this.RemoveLocaleBtn.Text = "Remove Locale";
-            this.RemoveLocaleBtn.UseVisualStyleBackColor = true;
-            this.RemoveLocaleBtn.Click += new System.EventHandler(this.RemoveLocaleBtn_Click);
+            this.removeLocaleBtn.Location = new System.Drawing.Point(229, 31);
+            this.removeLocaleBtn.Name = "removeLocaleBtn";
+            this.removeLocaleBtn.Size = new System.Drawing.Size(154, 22);
+            this.removeLocaleBtn.TabIndex = 4;
+            this.removeLocaleBtn.Text = "Remove Locale";
+            this.removeLocaleBtn.UseVisualStyleBackColor = true;
+            this.removeLocaleBtn.Click += new System.EventHandler(this.RemoveLocaleBtn_Click);
             // 
             // tableLayoutPanel4
             // 
@@ -220,7 +221,7 @@
             this.internalNameEnum.Name = "internalNameEnum";
             this.internalNameEnum.Size = new System.Drawing.Size(197, 20);
             this.internalNameEnum.TabIndex = 0;
-            this.internalNameEnum.Text = "name";
+            this.internalNameEnum.Text = "EnumName";
             this.internalNameEnum.MouseHover += new System.EventHandler(this.textbox_MouseHover);
             // 
             // organizerName
@@ -229,8 +230,7 @@
             this.organizerName.Name = "organizerName";
             this.organizerName.Size = new System.Drawing.Size(197, 20);
             this.organizerName.TabIndex = 1;
-            this.organizerName.Text = "organizerName";
-            this.organizerName.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+            this.organizerName.Text = "OrganizerName";
             this.organizerName.MouseHover += new System.EventHandler(this.textbox_MouseHover);
             // 
             // containerDomain
@@ -239,7 +239,7 @@
             this.containerDomain.Name = "containerDomain";
             this.containerDomain.Size = new System.Drawing.Size(198, 20);
             this.containerDomain.TabIndex = 2;
-            this.containerDomain.Text = "containerDomain";
+            this.containerDomain.Text = "com.ptc (Container Domain)";
             this.containerDomain.MouseHover += new System.EventHandler(this.textbox_MouseHover);
             // 
             // valueDisplayName
@@ -248,7 +248,7 @@
             this.valueDisplayName.Name = "valueDisplayName";
             this.valueDisplayName.Size = new System.Drawing.Size(198, 20);
             this.valueDisplayName.TabIndex = 3;
-            this.valueDisplayName.Text = "valueDisplayName";
+            this.valueDisplayName.Text = "EnumDisplay";
             this.valueDisplayName.MouseHover += new System.EventHandler(this.textbox_MouseHover);
             // 
             // tableLayoutPanel5
@@ -282,8 +282,8 @@
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel6.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
-            this.tableLayoutPanel6.Controls.Add(this.button2, 0, 0);
-            this.tableLayoutPanel6.Controls.Add(this.button1, 2, 0);
+            this.tableLayoutPanel6.Controls.Add(this.resetBtn, 0, 0);
+            this.tableLayoutPanel6.Controls.Add(this.saveBtn, 2, 0);
             this.tableLayoutPanel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel6.Location = new System.Drawing.Point(3, 547);
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
@@ -292,19 +292,19 @@
             this.tableLayoutPanel6.Size = new System.Drawing.Size(1041, 29);
             this.tableLayoutPanel6.TabIndex = 4;
             // 
-            // button2
+            // resetBtn
             // 
-            this.button2.Location = new System.Drawing.Point(3, 3);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 5;
-            this.button2.Text = "Reset";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.resetBtn.Location = new System.Drawing.Point(3, 3);
+            this.resetBtn.Name = "resetBtn";
+            this.resetBtn.Size = new System.Drawing.Size(75, 23);
+            this.resetBtn.TabIndex = 5;
+            this.resetBtn.Text = "Reset";
+            this.resetBtn.UseVisualStyleBackColor = true;
+            this.resetBtn.Click += new System.EventHandler(this.button2_Click);
             // 
-            // errorProvider1
+            // errorProvider
             // 
-            this.errorProvider1.ContainerControl = this;
+            this.errorProvider.ContainerControl = this;
             // 
             // Form1
             // 
@@ -312,10 +312,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1047, 579);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "Form1";
             this.Text = "Create Enumeration";
             this.ResizeEnd += new System.EventHandler(this.Form1_ResizeEnd);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.enumGrid)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.tableLayoutPanel2.ResumeLayout(false);
@@ -325,35 +326,42 @@
             this.tableLayoutPanel5.ResumeLayout(false);
             this.tableLayoutPanel5.PerformLayout();
             this.tableLayoutPanel6.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.errorProvider1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.errorProvider)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Button button1;
+        
         private System.Windows.Forms.SaveFileDialog saveFileDialog;
-        private System.Windows.Forms.ComboBox LocaleCombo;
-        private System.Windows.Forms.Button AddLocaleBtn;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox localeCombo;
+
+        private System.Windows.Forms.DataGridView enumGrid;
         private System.Windows.Forms.DataGridViewTextBoxColumn InternalValue;
         private System.Windows.Forms.DataGridViewTextBoxColumn MasterText;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
+
         private System.Windows.Forms.CheckBox valueSort;
         private System.Windows.Forms.TextBox internalNameEnum;
         private System.Windows.Forms.TextBox organizerName;
         private System.Windows.Forms.TextBox containerDomain;
         private System.Windows.Forms.TextBox valueDisplayName;
-        private System.Windows.Forms.ErrorProvider errorProvider1;
+
+        private System.Windows.Forms.Button removeLocaleBtn;
+        private System.Windows.Forms.Button addLocaleBtn;
+        private System.Windows.Forms.Button saveBtn;
+        private System.Windows.Forms.Button resetBtn;
+
+        private System.Windows.Forms.ToolTip textBoxTooltip;
+
+        private System.Windows.Forms.ErrorProvider errorProvider;
+
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel2;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel3;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
-        private System.Windows.Forms.Button RemoveLocaleBtn;
-        private System.Windows.Forms.ToolTip toolTip1;
     }
 }
 
