@@ -109,7 +109,7 @@ namespace CreateWindchillEnumeration
 
         private void AddLocaleBtn_Click(object sender, EventArgs e)
         {
-            var selectedLocale = LocaleCombo.SelectedItem != null ? LocaleCombo.SelectedItem.ToString() : null;
+            var selectedLocale = LocaleCombo.SelectedItem is not null ? LocaleCombo.SelectedItem.ToString() : null;
             if(!string.IsNullOrEmpty(selectedLocale))
             {
                 string columnName = $"Display_{selectedLocale}";
@@ -215,7 +215,7 @@ namespace CreateWindchillEnumeration
         private void textbox_MouseHover(object sender, EventArgs e)
         {
             Control control = sender as Control;
-            if(control != null)
+            if(control is not null)
             {
                 switch(control.Name)
                 {
