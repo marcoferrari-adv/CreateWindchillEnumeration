@@ -52,7 +52,9 @@ namespace CreateWindchillEnumeration
             csvBeginEnumDefView.AppendChild(csvOrganizer);
 
             XmlElement csvdomainRef = doc.CreateElement("csvdomainRef");
-            csvdomainRef.InnerText = "/System";
+            if(string.IsNullOrEmpty(request.ContainerDomain))
+                csvdomainRef.InnerText = "/System";
+
             csvBeginEnumDefView.AppendChild(csvdomainRef);
 
             createEnumDefinitionProperty(doc, rootNode, "displayName", request.ValueDisplayName, true);

@@ -42,12 +42,13 @@
             this.tableLayoutPanel3 = new System.Windows.Forms.TableLayoutPanel();
             this.removeLocaleBtn = new System.Windows.Forms.Button();
             this.tableLayoutPanel4 = new System.Windows.Forms.TableLayoutPanel();
+            this.valueSort = new System.Windows.Forms.CheckBox();
             this.internalNameEnum = new System.Windows.Forms.TextBox();
             this.organizerName = new System.Windows.Forms.TextBox();
-            this.containerDomain = new System.Windows.Forms.TextBox();
             this.valueDisplayName = new System.Windows.Forms.TextBox();
             this.tableLayoutPanel5 = new System.Windows.Forms.TableLayoutPanel();
-            this.valueSort = new System.Windows.Forms.CheckBox();
+            this.containerDomain = new System.Windows.Forms.TextBox();
+            this.domainContainerLbl = new System.Windows.Forms.Label();
             this.tableLayoutPanel6 = new System.Windows.Forms.TableLayoutPanel();
             this.resetBtn = new System.Windows.Forms.Button();
             this.errorProvider = new System.Windows.Forms.ErrorProvider(this.components);
@@ -202,10 +203,10 @@
             this.tableLayoutPanel4.ColumnCount = 2;
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanel4.Controls.Add(this.valueSort, 1, 1);
             this.tableLayoutPanel4.Controls.Add(this.internalNameEnum, 0, 0);
             this.tableLayoutPanel4.Controls.Add(this.organizerName, 0, 1);
-            this.tableLayoutPanel4.Controls.Add(this.containerDomain, 1, 0);
-            this.tableLayoutPanel4.Controls.Add(this.valueDisplayName, 1, 1);
+            this.tableLayoutPanel4.Controls.Add(this.valueDisplayName, 1, 0);
             this.tableLayoutPanel4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel4.Location = new System.Drawing.Point(3, 3);
             this.tableLayoutPanel4.Name = "tableLayoutPanel4";
@@ -214,6 +215,16 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel4.Size = new System.Drawing.Size(453, 56);
             this.tableLayoutPanel4.TabIndex = 6;
+            // 
+            // valueSort
+            // 
+            this.valueSort.AutoSize = true;
+            this.valueSort.Location = new System.Drawing.Point(229, 31);
+            this.valueSort.Name = "valueSort";
+            this.valueSort.Size = new System.Drawing.Size(68, 17);
+            this.valueSort.TabIndex = 0;
+            this.valueSort.Text = "Auto sort";
+            this.valueSort.UseVisualStyleBackColor = true;
             // 
             // internalNameEnum
             // 
@@ -233,18 +244,9 @@
             this.organizerName.Text = "OrganizerName";
             this.organizerName.MouseHover += new System.EventHandler(this.textbox_MouseHover);
             // 
-            // containerDomain
-            // 
-            this.containerDomain.Location = new System.Drawing.Point(229, 3);
-            this.containerDomain.Name = "containerDomain";
-            this.containerDomain.Size = new System.Drawing.Size(198, 20);
-            this.containerDomain.TabIndex = 2;
-            this.containerDomain.Text = "com.ptc (Container Domain)";
-            this.containerDomain.MouseHover += new System.EventHandler(this.textbox_MouseHover);
-            // 
             // valueDisplayName
             // 
-            this.valueDisplayName.Location = new System.Drawing.Point(229, 31);
+            this.valueDisplayName.Location = new System.Drawing.Point(229, 3);
             this.valueDisplayName.Name = "valueDisplayName";
             this.valueDisplayName.Size = new System.Drawing.Size(198, 20);
             this.valueDisplayName.TabIndex = 3;
@@ -256,7 +258,8 @@
             this.tableLayoutPanel5.ColumnCount = 2;
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel5.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel5.Controls.Add(this.valueSort, 0, 0);
+            this.tableLayoutPanel5.Controls.Add(this.containerDomain, 1, 0);
+            this.tableLayoutPanel5.Controls.Add(this.domainContainerLbl, 0, 0);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(462, 3);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -266,15 +269,22 @@
             this.tableLayoutPanel5.Size = new System.Drawing.Size(576, 56);
             this.tableLayoutPanel5.TabIndex = 7;
             // 
-            // valueSort
+            // containerDomain
             // 
-            this.valueSort.AutoSize = true;
-            this.valueSort.Location = new System.Drawing.Point(3, 3);
-            this.valueSort.Name = "valueSort";
-            this.valueSort.Size = new System.Drawing.Size(68, 17);
-            this.valueSort.TabIndex = 0;
-            this.valueSort.Text = "Auto sort";
-            this.valueSort.UseVisualStyleBackColor = true;
+            this.containerDomain.Location = new System.Drawing.Point(291, 3);
+            this.containerDomain.Name = "containerDomain";
+            this.containerDomain.Size = new System.Drawing.Size(198, 20);
+            this.containerDomain.TabIndex = 2;
+            this.containerDomain.MouseHover += new System.EventHandler(this.textbox_MouseHover);
+            // 
+            // domainContainerLbl
+            // 
+            this.domainContainerLbl.AutoSize = true;
+            this.domainContainerLbl.Location = new System.Drawing.Point(3, 0);
+            this.domainContainerLbl.Name = "domainContainerLbl";
+            this.domainContainerLbl.Size = new System.Drawing.Size(282, 26);
+            this.domainContainerLbl.TabIndex = 3;
+            this.domainContainerLbl.Text = "Fill the container domain only if the enumeration should be created at org level";
             // 
             // tableLayoutPanel6
             // 
@@ -362,6 +372,7 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel4;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel5;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel6;
+        private System.Windows.Forms.Label domainContainerLbl;
     }
 }
 

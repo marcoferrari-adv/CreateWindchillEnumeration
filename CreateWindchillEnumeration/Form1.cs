@@ -63,12 +63,6 @@ namespace CreateWindchillEnumeration
                 validationError = true;
             }
 
-            if (string.IsNullOrEmpty(containerDomain.Text))
-            {
-                errorProvider.SetError(containerDomain, "Value is required");
-                validationError = true;
-            }
-
             if (string.IsNullOrEmpty(organizerName.Text))
             {
                 errorProvider.SetError(organizerName, "Value is required");
